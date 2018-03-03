@@ -7,14 +7,18 @@ function setup(){
   var xpos = 50; /*round(random(10, width - 10));*/
   var ypos = 50; /*round(random(10, height - 10));*/
   snake = new Snake(xpos,ypos);
-  fruit = new Fruit(100,100);
+  fruit = new Fruit(150,200);
 }
 
 
 function draw(){
   background(200);
-  snake.Show();
-  snake.Move();
+  if(snake.GameOver()){
+    fruit.GenerateNew();
+  }
   snake.Eat(fruit);
+  snake.Move();
+  snake.Show();
+
   fruit.Show();
 }
